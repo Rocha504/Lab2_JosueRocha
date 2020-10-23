@@ -49,8 +49,13 @@ public class Casos {
     public void setEstado(String estado){
         this.estado=estado;
     }
-    public String getEstado(){
+    public String getEstado(Casos m){
         return estado;
+    }
+    
+    @Override
+    public String toString(){
+        return "Lugar del crimen:"+lugar+"\n|Tipo de crimen: "+tipo+"\n|Descripicion: "+descripcion+"\n|Detective a cargo: "+detective+"\n Estado del caso: "+estado;
     }
     
 }

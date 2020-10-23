@@ -9,6 +9,7 @@ import java.util.Scanner;
  */
 public class Lab2_JosueRocha {
 
+    static Casos m = new Casos();
     static Scanner leer = new Scanner(System.in);
 
     /**
@@ -94,7 +95,7 @@ public class Lab2_JosueRocha {
                     }
                     break;
                 case 2:
-                    System.out.println(Detectives);
+                    imprimir(Detectives);
                     System.out.println();
                     System.out.println("Posicion del Detective a eliminar");
                     System.out.println("Nota: Recuerde que las posiciones empiezan desde 0 de derecha a izquierda");
@@ -113,7 +114,7 @@ public class Lab2_JosueRocha {
                     System.out.println("2-Modificar un Caso");
                     int modificar = leer.nextInt();
                     if (modificar == 1) {
-                        System.out.println(Detectives);
+                        imprimir(Detectives);
                         System.out.println();
                         System.out.println("Ingrese la posicion del detective que desea modificar");
                         System.out.println("Nota: Recuerde que las posiciones empiezan desde 0 de derecha a izquierda");
@@ -158,7 +159,7 @@ public class Lab2_JosueRocha {
                             }
                         }
                     } else if (modificar == 2) {
-                        System.out.println(Casos);
+                        imprimir(Casos);
                         System.out.println();
                         System.out.println("Ingrese la posicion del caso que desea modificar");
                         System.out.println("Nota: Recuerde que las posiciones empiezan desde 0 de derecha a izquierda");
@@ -226,25 +227,60 @@ public class Lab2_JosueRocha {
                         }
                     } else {
                         System.out.println("Ingrese una opcion valida(1-Detectives)(2-Casos)");
-                        modificar=leer.nextInt();
+                        modificar = leer.nextInt();
                     }
-                break;
+                    break;
                 case 4:
                     System.out.println("Ingrese la lista que desea ver");
                     System.out.println("1-Detectives");
                     System.out.println("2-Casos");
-                    int lista=leer.nextInt();
+                    int lista = leer.nextInt();
+                    if (lista == 1) {
+                        imprimir(Detectives);
+                    } else if (lista == 2) {
+                        System.out.println("Ingrese el tipo de casos que desea ver");
+                        System.out.println("1-Todos");
+                        System.out.println("2-Resueltos");
+                        System.out.println("3-Pendientes");
+                        int casos = leer.nextInt();
+                        if (casos == 1) {
+                            imprimir(Casos);
+                        } else if (casos == 2) {
+                            for (int i = 0; i < Casos.size(); i++) {
+                                Casos aux = (Casos) Casos.get(i);
+                                String estado = m.getEstado(aux);
+                                if (estado.equalsIgnoreCase("Resuelto")) {
+                                    System.out.println(aux);
+                                }
+                            }
+                        } else if (casos == 3) {
+                            for (int i = 0; i < Casos.size(); i++) {
+                                Casos aux = (Casos) Casos.get(i);
+                                String estado = m.getEstado(aux);
+                                if (estado.equalsIgnoreCase("En proceso")) {
+                                    System.out.println(aux);
+                                }
+                            }
+                        }
+                        else{
+                           System.out.println("Ingrese uan opcion valida(1-Todos)(2-Resueltos)(3-Pendientes)");
+                        }
+
+                    }
+                break;
+                default:
+                    System.out.println("Ingrese una opcion valida");
+                    op=leer.nextInt();
             }
 
         }
 
     }
-    public static void imprimir(ArrayList lista){
-        
-        for(int i=0;i<lista.size();i++){
-            String aux=lista.get(i).toString();
+
+    public static void imprimir(ArrayList lista) {
+        for (int i = 0; i < lista.size(); i++) {
             System.out.println("***************");
-            System.out.println(aux);
+            System.out.println(i + "-" + lista.get(i));
         }
     }
 }
