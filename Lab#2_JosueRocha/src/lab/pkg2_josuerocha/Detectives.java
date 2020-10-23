@@ -46,7 +46,7 @@ public class Detectives {
     public int getLaborales(){
         return laborales;
     }
-    public void getNivel(int nivel){
+    public void setNivel(int nivel){
         this.nivel=nivel;
     }
     public int getNivel(){
