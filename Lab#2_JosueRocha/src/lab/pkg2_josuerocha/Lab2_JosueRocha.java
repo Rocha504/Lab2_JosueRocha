@@ -74,7 +74,7 @@ public class Lab2_JosueRocha {
                             System.out.println("Ingrese una opcion valida(1-Homicidio)(2-Secuestro)(3-Robo)");
                             crimen = leer.nextInt();
                         }
-                        System.out.println(Detectives);
+                        imprimir(Detectives);
                         System.out.println("Ingrese el nombre del detective a cargo");
                         String detective = leer.next();
                         System.out.println("Ingrese el estado del caso (1-En proceso)(2-Resuelto)");
@@ -220,7 +220,7 @@ public class Lab2_JosueRocha {
                                     ((Casos) Casos.get(p)).setEstado(tipo3);
                                     break;
                                 default:
-                                    System.out.println("Ingrese uan opcion valida");
+                                    System.out.println("Ingrese una opcion valida");
                                     modificacion = leer.nextInt();
                             }
                         }
@@ -228,10 +228,23 @@ public class Lab2_JosueRocha {
                         System.out.println("Ingrese una opcion valida(1-Detectives)(2-Casos)");
                         modificar=leer.nextInt();
                     }
-
+                break;
+                case 4:
+                    System.out.println("Ingrese la lista que desea ver");
+                    System.out.println("1-Detectives");
+                    System.out.println("2-Casos");
+                    int lista=leer.nextInt();
             }
 
         }
 
+    }
+    public static void imprimir(ArrayList lista){
+        
+        for(int i=0;i<lista.size();i++){
+            String aux=lista.get(i).toString();
+            System.out.println("***************");
+            System.out.println(aux);
+        }
     }
 }

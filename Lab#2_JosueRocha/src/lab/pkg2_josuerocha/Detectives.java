@@ -53,5 +53,9 @@ public class Detectives {
         return nivel;
     }
     
+    @Override
+    public String toString(){
+        return "Nombre: "+nombre+"|Edad: "+edad+"|Nacionalidad: "+nacionalidad+"Experiencia laboral: "+laborales+" años|Nivel: "+nivel; 
+    }
     
 }
